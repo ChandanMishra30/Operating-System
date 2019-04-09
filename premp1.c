@@ -28,33 +28,7 @@ void main()
         proc_queue[i].status=0;
         burst_t=burst_t+ proc_queue[i].burst_t;
     }
-    AT_Sorting;
-    proc_queue[9].priority=-9999;
-    printf("\nProcess Name\tArrival Time\tBurst Time\tPriority\tWaiting Time");
-    for(t = proc_queue[0].arrival_t;t<burst_t;)
-    {
-        largest = 9;
-        for(i=0;i<limit;i++)
-        {
-            if(proc_queue[i].arrival_t <= t && proc_queue[i].status !=1 && proc_queue[i].priority > proc_queue[largest].priority )
-            {
-                largest = i;
-            }
-        }
-            t=t + proc_queue[largest].burst_t;
-            proc_queue[largest].comp_t=t;
-            proc_queue[largest].waiting_t=proc_queue[largest].comp_t - proc_queue[largest].arrival_t - proc_queue[largest].burst_t ;
-            proc_queue[largest].turnaround_t=proc_queue[largest].comp_t - proc_queue[largest].arrival_t;
-            proc_queue[largest].status=1;
-            wait_t = wait_t + proc_queue[largest].waiting_t;
-            turnaround_t=turnaround_t+proc_queue[largest].turnaround_t;
-            printf("\n%c\t\t%d\t\t%d\t\t%d\t\t%d",proc_queue[largest].p_name,proc_queue[largest].arrival_t,proc_queue[largest].burst_t,proc_queue[largest].priority,proc_queue[largest].waiting_t);
-        }
-        avg_wt=wait_t / limit;
-        avg_tt=turnaround_t/limit;
-        printf("\n\nAverage Waiting Time Is: \t%f\n",avg_wt);
-        printf("Average Turnaround Time Is: \t%f\n",avg_tt);
-}
+    
 void AT_Sorting()
 {
     struct processes temp;
